@@ -16,6 +16,7 @@ namespace API.Middleware
         {
             _logger = logger;
             _next = next;
+
         }
 
         public async Task Invoke(HttpContext context)
@@ -23,7 +24,7 @@ namespace API.Middleware
             try
             {
                 await _next(context);
-            } 
+            }
             catch (Exception ex)
             {
                 await HandleExceptionAsync(context, ex, _logger);
@@ -33,11 +34,10 @@ namespace API.Middleware
         private async Task HandleExceptionAsync(HttpContext context, Exception ex, ILogger<ErrorHandlingMiddleware> logger)
         {
             object errors = null;
-
             switch (ex)
             {
                 case RestException re:
-                    logger.LogError(ex, "REST ERROR");
+                    logger.LogError(ex, "REST EXCEPTION");
                     errors = re.Errors;
                     context.Response.StatusCode = (int)re.Code;
                     break;
@@ -47,12 +47,10 @@ namespace API.Middleware
                     context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     break;
             }
-
             context.Response.ContentType = "application/json";
-            if (errors != null)
+            if(errors != null)
             {
-                var result = JsonConvert.SerializeObject(new 
-                {
+                var result = JsonConvert.SerializeObject(new {
                     errors
                 });
 

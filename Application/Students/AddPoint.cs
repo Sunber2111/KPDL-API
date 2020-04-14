@@ -34,10 +34,10 @@ namespace Application.Students
             {
                 
                 if(!request.TypePoint.CheckTypePoint())
-                    throw new RestException(HttpStatusCode.BadRequest,new {type = "Wrong type"});
+                    throw new RestException(HttpStatusCode.BadRequest,new {TypePoint = "Wrong type"});
 
                 if(!request.Point.CheckPointTest())
-                    throw new RestException(HttpStatusCode.BadRequest,new {type = "Wrong point"});
+                    throw new RestException(HttpStatusCode.BadRequest,new {Point = "Wrong point"});
 
                 var point = await db.PointTest.SingleOrDefaultAsync(p => p.Id == request.IdPoint);
 

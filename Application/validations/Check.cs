@@ -9,7 +9,7 @@ namespace Application.validations
 
         public static bool CheckPointTest(this double number)
         {
-            return (number <= 10 || number >= 0);
+            return (number <= 10 && number >= 0);
         }
     }
 }

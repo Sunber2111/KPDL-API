@@ -10,5 +10,6 @@ namespace Application.Students.DTO
         public string Name { get; set; }
         public DateTime Dob { get; set; }
         public PointTestDTO Point { get; set; }
+
     }
 }

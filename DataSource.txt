@@ -1,0 +1,163 @@
+var student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Bắc Giang",
+                Email="thihong@gmail.com",
+                Dob=new DateTime(1989,11,2),
+                Image=null,
+                Name="Hà Thị Hồng",
+                Phone="0798733215",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Hà Tiên",
+                Email="atesa@gmail.com",
+                Dob=new DateTime(1989,11,2),
+                Image=null,
+                Name="Nguyễn Thị Mộng",
+                Phone="018223912",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Hà Nội",
+                Email="moewcute@gmail.com",
+                Dob=new DateTime(1989,10,22),
+                Image=null,
+                Name="Nguyễn Công Lý",
+                Phone="012887445",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Đak Lak",
+                Email="wix@gmail.com",
+                Dob=new DateTime(1989,4,2),
+                Image=null,
+                Name="Nông A Làng",
+                Phone="078745515",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Bình Định",
+                Email="resow@gmail.com",
+                Dob=new DateTime(1999,11,2),
+                Image=null,
+                Name="Đinh La Thăng",
+                Phone="0787433215",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Huế",
+                Email="voquangthinh@gmail.com",
+                Dob=new DateTime(2001,5,12),
+                Image=null,
+                Name="Võ Quang Thịnh",
+                Phone="077445812",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Vĩnh Long",
+                Email="Tranvantoan132@gmail.com",
+                Dob=new DateTime(1999,6,9),
+                Image=null,
+                Name="Trần Văn Toàn",
+                Phone="0855733215",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Bình Thuận",
+                Email="thienly12@gmail.com",
+                Dob=new DateTime(1989,5,29),
+                Image=null,
+                Name="Nguyễn Thị Lý",
+                Phone="0874463215",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Thái Nguyên",
+                Email="pt231@gmail.com",
+                Dob=new DateTime(1998,12,24),
+                Image=null,
+                Name="Trần Lâm Phương Trinh",
+                Phone="012554883",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Đà Lạt",
+                Email="quangvu98@gmail.com",
+                Dob=new DateTime(1989,11,2),
+                Image=null,
+                Name="Trần Quang Vũ",
+                Phone="0797233215",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Bình Dương",
+                Email="sunber@gmail.com",
+                Dob=new DateTime(1989,11,2),
+                Image=null,
+                Name="Đặng Hào",
+                Phone="0797441253",
+                Sex=false
+            };
+            context.Add(student);
+
+////
+
+var sub = new Subject{
+                Id = new Guid("8D2A4BDC-6B58-4EE9-97F1-39A39DF5BC17"),
+                Name = "Toán A2"
+            };
+            context.Subject.Add(sub);
+            await context.SaveChangesAsync();
+            var students = context.Student.ToList();
+            var idsub = new Guid("8D2A4BDC-6B58-4EE9-97F1-39A39DF5BC17");
+            foreach (var student in students)
+            {
+                var point = new PointTest
+                {
+                    IdStudent = student.Id,
+                    IdSubject = idsub,
+                    Id = Guid.NewGuid()
+                };
+                var diem = GetRandomNumber(0, 10);
+                point.Tk = diem;
+                diem = GetRandomNumber(4, 8);
+                point.Gk = diem;
+                diem = GetRandomNumber(7, 10);
+                point.Ck = diem;
+                diem = GetRandomNumber(6, 10);
+                point.Th = diem;
+                context.PointTest.Add(point);
+            }
+
+            await context.SaveChangesAsync();

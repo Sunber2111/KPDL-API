@@ -1,0 +1,13 @@
+D:\Study\KPDL\Project\API\Application\bin\Debug\netcoreapp3.1\Application.deps.json
+D:\Study\KPDL\Project\API\Application\bin\Debug\netcoreapp3.1\Application.dll
+D:\Study\KPDL\Project\API\Application\bin\Debug\netcoreapp3.1\Application.pdb
+D:\Study\KPDL\Project\API\Application\bin\Debug\netcoreapp3.1\Domain.dll
+D:\Study\KPDL\Project\API\Application\bin\Debug\netcoreapp3.1\Persistence.dll
+D:\Study\KPDL\Project\API\Application\bin\Debug\netcoreapp3.1\Domain.pdb
+D:\Study\KPDL\Project\API\Application\bin\Debug\netcoreapp3.1\Persistence.pdb
+D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.csprojAssemblyReference.cache
+D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfoInputs.cache
+D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.AssemblyInfo.cs
+D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.csproj.CopyComplete
+D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.dll
+D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.pdb
