@@ -1,12 +1,12 @@
-**API ROUTER**
+# API ROUTER 
 
-[HttpGet]
+# [HttpGet]
 ```bash
 /api/student/subject/{subjectid}
 ```
 Lấy toàn bộ danh sách sinh viên theo mã môn học phần
 
-[HttpPost]
+# [HttpPost]
 ```bash
 /api/student/point
 ```
