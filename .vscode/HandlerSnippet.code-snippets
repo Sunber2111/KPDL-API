@@ -1,0 +1,82 @@
+{
+	"Query Handler ": {
+		"prefix": "qhandler",
+		"body": [
+		  "public class Query : IRequest<${1:returnObject}>{",
+		  "",
+		  "}",
+		  "",
+		  "public class Handler : IRequestHandler<Query, ${1:returnObject}>",
+		  "{",
+		  "   private readonly DataContext db;",
+		  "",
+		  "   public Handler(DataContext db)",
+		  "   {",
+		  "      this.db = db;",
+		  "   }",
+		  "",
+		  "   public async Task<${1:returnObject}> Handle(Query request, CancellationToken cancellationToken)",
+		  "   {",
+		  "      // handler logic here",
+		  "   }",
+		  "}"
+		],
+		"description": "Query Handler "
+	  },
+	  "Command Handler ": {
+		"prefix": "chandler",
+		"body": [
+		  "public class Command : IRequest",
+		  "{",
+		  "}",
+		  "",
+		  "public class Handler : IRequestHandler<Command>",
+		  "{",
+		  "      private readonly DataContext db;",
+		  "",
+		  "      public Handler(DataContext db)",
+		  "      {",
+		  "          this.db = db;",
+		  "      }",
+		  "",
+		  "      public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)",
+		  "      {",
+		  "          // Logic here",
+		  "          var success = await db.SaveChangesAsync() > 0;",
+		  "",
+		  "          if(success) return Unit.Value;",
+		  "",
+		  "          throw new Exception(\"Has An Error Oscur\");",
+		  "       }",
+		  "}"
+		],
+		"description": "Command Handler "
+	  },
+	  "create store common": {
+		"prefix": "csc",
+		"body": [
+		  "import { observable, action, runInAction, configure, computed } from 'mobx'",
+		  "import { createContext } from 'react'",
+		  "import { error, success } from '../notify'",
+		  "import agent from '../api/agent'",
+		  "",
+		  "",
+		  "configure({enforceActions:'always'})",
+		  "",
+		  "class ${1:StoreName}{",
+		  "",
+		  " ",
+		  "}",
+		  "",
+		  "export default createContext(new ${1:StoreName}())"
+		],
+		"description": "create store common"
+	  },
+	  "sync tax pat": {
+		"prefix": "pat",
+		"body": [
+		  "public async Task<ActionResult<User>> Register(Register.Command command)"
+		],
+		"description": "sync tax pat"
+	  }
+}
