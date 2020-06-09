@@ -11,3 +11,4 @@ D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.Assemb
 D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.csproj.CopyComplete
 D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.dll
 D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.pdb
+D:\Study\KPDL\Project\API\Application\obj\Debug\netcoreapp3.1\Application.csproj.CoreCompileInputs.cache

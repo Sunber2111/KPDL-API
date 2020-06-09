@@ -8,9 +8,10 @@ namespace Domain
         public Student()
         {
             PointTest = new HashSet<PointTest>();
+            Orders = new HashSet<Order>();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
@@ -20,5 +21,7 @@ namespace Domain
         public string Address { get; set; }
 
         public virtual ICollection<PointTest> PointTest { get; set; }
+
+         public virtual ICollection<Order> Orders { get; set; }
     }
 }

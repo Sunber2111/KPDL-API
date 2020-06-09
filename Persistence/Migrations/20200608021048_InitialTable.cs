@@ -3,32 +3,34 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class InitValue : Migration
+    public partial class InitialTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Account",
+                name: "Accounts",
                 columns: table => new
                 {
                     NameLogin = table.Column<string>(unicode: false, maxLength: 50, nullable: false),
                     Password = table.Column<string>(maxLength: 50, nullable: false),
-                    IdTeacher = table.Column<Guid>(nullable: false),
+                    IdTeacher = table.Column<int>(nullable: true),
                     IsEnable = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Account_1", x => x.NameLogin);
+                    table.PrimaryKey("PK_Account", x => x.NameLogin);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Student",
+                name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: true),
                     Email = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
                     Phone = table.Column<string>(unicode: false, maxLength: 15, nullable: true),
+                    Dob = table.Column<DateTime>(nullable: false),
                     Sex = table.Column<bool>(nullable: true),
                     Image = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true)
@@ -39,10 +41,11 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Subject",
+                name: "Subjects",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
@@ -51,17 +54,19 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teacher",
+                name: "Teachers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(maxLength: 50, nullable: true),
                     Phone = table.Column<string>(unicode: false, maxLength: 15, nullable: true),
                     Address = table.Column<string>(nullable: true),
                     Email = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
                     Sex = table.Column<bool>(nullable: true),
                     Image = table.Column<string>(nullable: true),
-                    Degree = table.Column<string>(maxLength: 50, nullable: true)
+                    Degree = table.Column<string>(maxLength: 50, nullable: true),
+                    Dob = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,16 +74,44 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PointTest",
+                name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    StudentId = table.Column<int>(nullable: false),
+                    SubjectId = table.Column<int>(nullable: false),
+                    OrderDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Order", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Order_Student",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Order_Subject",
+                        column: x => x.SubjectId,
+                        principalTable: "Subjects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PointTests",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     TK = table.Column<double>(nullable: true),
                     GK = table.Column<double>(nullable: true),
                     CK = table.Column<double>(nullable: true),
                     TH = table.Column<double>(nullable: true),
-                    IdStudent = table.Column<Guid>(nullable: true),
-                    IdSubject = table.Column<Guid>(nullable: true)
+                    IdStudent = table.Column<int>(nullable: true),
+                    IdSubject = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,24 +119,25 @@ namespace Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_PointTest_Student",
                         column: x => x.IdStudent,
-                        principalTable: "Student",
+                        principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_PointTest_Subject",
                         column: x => x.IdSubject,
-                        principalTable: "Subject",
+                        principalTable: "Subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teaching",
+                name: "Teachings",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
-                    IdSubject = table.Column<Guid>(nullable: true),
-                    IdTeacher = table.Column<Guid>(nullable: true),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    IdSubject = table.Column<int>(nullable: true),
+                    IdTeacher = table.Column<int>(nullable: true),
                     Location = table.Column<string>(nullable: true),
                     TeachDay = table.Column<string>(maxLength: 50, nullable: true)
                 },
@@ -113,57 +147,70 @@ namespace Persistence.Migrations
                     table.ForeignKey(
                         name: "FK_Teaching_Subject",
                         column: x => x.IdSubject,
-                        principalTable: "Subject",
+                        principalTable: "Subjects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Teaching_Teacher",
                         column: x => x.IdTeacher,
-                        principalTable: "Teacher",
+                        principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PointTest_IdStudent",
-                table: "PointTest",
+                name: "IX_Orders_StudentId",
+                table: "Orders",
+                column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_SubjectId",
+                table: "Orders",
+                column: "SubjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PointTests_IdStudent",
+                table: "PointTests",
                 column: "IdStudent");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PointTest_IdSubject",
-                table: "PointTest",
+                name: "IX_PointTests_IdSubject",
+                table: "PointTests",
                 column: "IdSubject");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Teaching_IdSubject",
-                table: "Teaching",
+                name: "IX_Teachings_IdSubject",
+                table: "Teachings",
                 column: "IdSubject");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Teaching_IdTeacher",
-                table: "Teaching",
+                name: "IX_Teachings_IdTeacher",
+                table: "Teachings",
                 column: "IdTeacher");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Account");
+                name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "PointTest");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Teaching");
+                name: "PointTests");
 
             migrationBuilder.DropTable(
-                name: "Student");
+                name: "Teachings");
 
             migrationBuilder.DropTable(
-                name: "Subject");
+                name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Teacher");
+                name: "Subjects");
+
+            migrationBuilder.DropTable(
+                name: "Teachers");
         }
     }
 }

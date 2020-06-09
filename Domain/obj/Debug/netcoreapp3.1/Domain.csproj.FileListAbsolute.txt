@@ -6,3 +6,4 @@ D:\Study\KPDL\Project\API\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInpu
 D:\Study\KPDL\Project\API\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
 D:\Study\KPDL\Project\API\Domain\obj\Debug\netcoreapp3.1\Domain.dll
 D:\Study\KPDL\Project\API\Domain\obj\Debug\netcoreapp3.1\Domain.pdb
+D:\Study\KPDL\Project\API\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache

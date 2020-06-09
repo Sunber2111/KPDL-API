@@ -30,7 +30,7 @@ namespace Application.Students
 
             public async Task<List<StudentDTO>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var students = await _db.Student.ToListAsync();
+                var students = await _db.Students.ToListAsync();
                 return _mapper.Map<List<Student>,List<StudentDTO>>(students);
             }
         }

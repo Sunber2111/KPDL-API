@@ -9,12 +9,14 @@ namespace Domain
         {
             PointTest = new HashSet<PointTest>();
             Teaching = new HashSet<Teaching>();
+            Orders = new HashSet<Order>();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public virtual ICollection<PointTest> PointTest { get; set; }
         public virtual ICollection<Teaching> Teaching { get; set; }
+         public virtual ICollection<Order> Orders { get; set; }
     }
 }

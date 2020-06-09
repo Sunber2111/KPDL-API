@@ -4,7 +4,7 @@ namespace Application.PoinTests.DTO
 {
     public class PointTestDTO
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public double? Tk { get; set; }
         public double? Gk { get; set; }
         public double? Ck { get; set; }

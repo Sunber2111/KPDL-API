@@ -12,19 +12,21 @@ namespace Persistence
         {
         }
 
-        public virtual DbSet<Account> Account { get; set; }
-        public virtual DbSet<PointTest> PointTest { get; set; }
-        public virtual DbSet<Student> Student { get; set; }
-        public virtual DbSet<Subject> Subject { get; set; }
-        public virtual DbSet<Teacher> Teacher { get; set; }
-        public virtual DbSet<Teaching> Teaching { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<PointTest> PointTests { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<Teaching> Teachings { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>(entity =>
             {
                 entity.HasKey(e => e.NameLogin)
-                    .HasName("PK_Account_1");
+                    .HasName("PK_Account");
 
                 entity.Property(e => e.NameLogin)
                     .HasMaxLength(50)
@@ -37,7 +39,9 @@ namespace Persistence
 
             modelBuilder.Entity<PointTest>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.HasKey(e => e.Id).HasName("PK_PointTest");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Ck).HasColumnName("CK");
 
@@ -47,12 +51,12 @@ namespace Persistence
 
                 entity.Property(e => e.Tk).HasColumnName("TK");
 
-                entity.HasOne(d => d.IdStudentNavigation)
+                entity.HasOne(d => d.Student)
                     .WithMany(p => p.PointTest)
                     .HasForeignKey(d => d.IdStudent)
                     .HasConstraintName("FK_PointTest_Student");
 
-                entity.HasOne(d => d.IdSubjectNavigation)
+                entity.HasOne(d => d.Subject)
                     .WithMany(p => p.PointTest)
                     .HasForeignKey(d => d.IdSubject)
                     .HasConstraintName("FK_PointTest_Subject");
@@ -60,7 +64,9 @@ namespace Persistence
 
             modelBuilder.Entity<Student>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.HasKey(e => e.Id).HasName("PK_Student");
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(50)
@@ -71,18 +77,24 @@ namespace Persistence
                 entity.Property(e => e.Phone)
                     .HasMaxLength(15)
                     .IsUnicode(false);
+
+                
             });
 
             modelBuilder.Entity<Subject>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                 entity.HasKey(e => e.Id).HasName("PK_Subject");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Name).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Teacher>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.HasKey(e=>e.Id).HasName("PK_Teacher");
 
                 entity.Property(e => e.Degree).HasMaxLength(50);
 
@@ -99,19 +111,38 @@ namespace Persistence
 
             modelBuilder.Entity<Teaching>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.HasKey(e => e.Id).HasName("PK_Teaching");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.TeachDay).HasMaxLength(50);
 
-                entity.HasOne(d => d.IdSubjectNavigation)
+                entity.HasOne(d => d.Subject)
                     .WithMany(p => p.Teaching)
                     .HasForeignKey(d => d.IdSubject)
                     .HasConstraintName("FK_Teaching_Subject");
 
-                entity.HasOne(d => d.IdTeacherNavigation)
+                entity.HasOne(d => d.Teacher)
                     .WithMany(p => p.Teaching)
                     .HasForeignKey(d => d.IdTeacher)
                     .HasConstraintName("FK_Teaching_Teacher");
+            });
+
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_Order");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+                entity.HasOne(d => d.Subject)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.SubjectId)
+                    .HasConstraintName("FK_Order_Subject");
+
+                entity.HasOne(d => d.Student)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.StudentId)
+                    .HasConstraintName("FK_Order_Student");
             });
 
         }

@@ -11,3 +11,5 @@ D:\Study\KPDL\Project\API\Persistence\obj\Debug\netcoreapp3.1\Persistence.dll
 D:\Study\KPDL\Project\API\Persistence\obj\Debug\netcoreapp3.1\Persistence.pdb
 D:\Study\KPDL\Project\API\Persistence\bin\Debug\netcoreapp3.1\Persistence.runtimeconfig.json
 D:\Study\KPDL\Project\API\Persistence\bin\Debug\netcoreapp3.1\Persistence.runtimeconfig.dev.json
+D:\Study\KPDL\Project\API\Persistence\obj\Debug\netcoreapp3.1\Persistence.csproj.CoreCompileInputs.cache
+D:\Study\KPDL\Project\API\Persistence\obj\Debug\netcoreapp3.1\Persistence.genruntimeconfig.cache

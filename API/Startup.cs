@@ -34,6 +34,14 @@ namespace API
                 opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CrosPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+                });
+            });
+            
             services.AddMediatR(typeof(List.Handler).Assembly);
 
             services.AddAutoMapper(typeof(List.Handler));
@@ -50,6 +58,8 @@ namespace API
                 //app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("CrosPolicy");
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();

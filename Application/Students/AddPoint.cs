@@ -14,7 +14,7 @@ namespace Application.Students
     {
         public class Command : IRequest
         {
-            public Guid IdPoint { get; set; }
+            public int IdPoint { get; set; }
 
             public double Point { get; set; }
 
@@ -39,7 +39,7 @@ namespace Application.Students
                 if(!request.Point.CheckPointTest())
                     throw new RestException(HttpStatusCode.BadRequest,new {Point = "Wrong point"});
 
-                var point = await db.PointTest.SingleOrDefaultAsync(p => p.Id == request.IdPoint);
+                var point = await db.PointTests.SingleOrDefaultAsync(p => p.Id == request.IdPoint);
 
                 if (point == null)
                     throw new RestException(HttpStatusCode.NotFound, new { point = "Not Found" });

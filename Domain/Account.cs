@@ -7,7 +7,7 @@ namespace Domain
     {
         public string NameLogin { get; set; }
         public string Password { get; set; }
-        public Guid IdTeacher { get; set; }
+        public int? IdTeacher { get; set; }
         public bool? IsEnable { get; set; }
     }
 }

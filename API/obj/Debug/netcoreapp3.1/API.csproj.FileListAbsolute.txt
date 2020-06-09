@@ -151,3 +151,5 @@ D:\Study\KPDL\Project\API\API\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnal
 D:\Study\KPDL\Project\API\API\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Study\KPDL\Project\API\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cs
 D:\Study\KPDL\Project\API\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache
+D:\Study\KPDL\Project\API\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
+D:\Study\KPDL\Project\API\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache

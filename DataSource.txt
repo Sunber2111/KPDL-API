@@ -130,6 +130,126 @@ var student = new Student()
                 Sex=false
             };
             context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Hà Tĩnh",
+                Email="kimthien@gmail.com",
+                Dob=new DateTime(1999,1,22),
+                Image=null,
+                Name="Nông Kim Thiên",
+                Phone="015448996",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Khánh Hòa",
+                Email="thienbao@gmail.com",
+                Dob=new DateTime(2002,9,9),
+                Image=null,
+                Name="Nguyễn Thiên Bảo",
+                Phone="087669335",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Bình Phước",
+                Email="quochhoa@gmail.com",
+                Dob=new DateTime(1999,7,4),
+                Image=null,
+                Name="Huỳnh Hòa",
+                Phone="018223751",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Long An",
+                Email="anhhao@gmail.com",
+                Dob=new DateTime(1989,11,2),
+                Image=null,
+                Name="Trần Quốc Anh Hòa",
+                Phone="018287541",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Đà Nẵng",
+                Email="duchoang@gmail.com",
+                Dob=new DateTime(1999,12,24),
+                Image=null,
+                Name="Võ Đức Hoàng",
+                Phone="018298512",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Tiền Giang",
+                Email="mydung@gmail.com",
+                Dob=new DateTime(1999,11,2),
+                Image=null,
+                Name="Nguyễn Thị Mỹ Dung",
+                Phone="018223912",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="An Giang",
+                Email="kiemtien@gmail.com",
+                Dob=new DateTime(1999,10,22),
+                Image=null,
+                Name="NPhan Kim Tiền",
+                Phone="018223912",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Cà Mau",
+                Email="anhduy@gmail.com",
+                Dob=new DateTime(1989,11,2),
+                Image=null,
+                Name="Lê Phan Anh Duy",
+                Phone="012554443",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Tiền Giang",
+                Email="tonga@gmail.com",
+                Dob=new DateTime(1989,11,2),
+                Image=null,
+                Name="Tô Thanh Nga",
+                Phone="012554339",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                Id=Guid.NewGuid(),
+                Address="Lào Cai",
+                Email="asianas@gmail.com",
+                Dob=new DateTime(1989,11,2),
+                Image=null,
+                Name="Nguyễn Trần Kĩ",
+                Phone="052336994",
+                Sex=false
+            };
+            context.Add(student);
 
 ////
 

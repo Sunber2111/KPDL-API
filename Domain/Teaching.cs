@@ -5,13 +5,13 @@ namespace Domain
 {
     public class Teaching
     {
-        public Guid Id { get; set; }
-        public Guid? IdSubject { get; set; }
-        public Guid? IdTeacher { get; set; }
+        public int Id { get; set; }
+        public int? IdSubject { get; set; }
+        public int? IdTeacher { get; set; }
         public string Location { get; set; }
         public string TeachDay { get; set; }
 
-        public virtual Subject IdSubjectNavigation { get; set; }
-        public virtual Teacher IdTeacherNavigation { get; set; }
+        public virtual Subject Subject { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }

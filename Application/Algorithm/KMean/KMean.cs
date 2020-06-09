@@ -16,7 +16,7 @@ namespace Application.Algorithm.KMean
 
         private List<Data> Datas;
 
-        private int MaxTraininTimes;
+        private int MaxTrainingTimes;
 
         private int SumOfClusters;
 
@@ -34,7 +34,7 @@ namespace Application.Algorithm.KMean
             TrainingDatas = new List<TrainingData>();
             BeLong = new BeLongTo();
             SumOfClusters = sumCluster;
-            MaxTraininTimes = maxTraining;
+            MaxTrainingTimes = maxTraining;
         }
 
         private double NewClus(List<Data> list)
@@ -44,7 +44,7 @@ namespace Application.Algorithm.KMean
             {
                 sum += item.Value;
             }
-            return (sum / list.Count);
+            return Math.Round(sum / list.Count,2,MidpointRounding.AwayFromZero);;
         }
 
         public void UpdateCluster()
@@ -120,7 +120,7 @@ namespace Application.Algorithm.KMean
             }
 
             int count = 0;
-            while(count< MaxTraininTimes)
+            while(count< MaxTrainingTimes)
             {
                 Training();
                 if (Update())

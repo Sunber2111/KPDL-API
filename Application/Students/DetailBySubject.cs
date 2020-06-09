@@ -16,7 +16,7 @@ namespace Application.Students
     {
         public class Query : IRequest<List<StudentDTO>>
         {
-            public Guid IdSubject { get; set; }
+            public int IdSubject { get; set; }
         }
 
         public class Handler : IRequestHandler<Query, List<StudentDTO>>
@@ -32,7 +32,7 @@ namespace Application.Students
 
             public async Task<List<StudentDTO>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var students = await db.Student
+                var students = await db.Students
                                         .Where(student => student.PointTest.Any(x => x.IdSubject == request.IdSubject)).ToListAsync();
                 return _mapper.Map<List<Student>, List<StudentDTO>>(students);
             }

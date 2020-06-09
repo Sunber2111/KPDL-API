@@ -17,7 +17,7 @@ namespace Application.Students
     {
         public class Query : IRequest<List<TrainingData>>
         {
-            public Guid IdSubject { get; set; }
+            public int IdSubject { get; set; }
         }
 
         public class Handler : IRequestHandler<Query, List<TrainingData>>
@@ -34,7 +34,7 @@ namespace Application.Students
 
             public async Task<List<TrainingData>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var students = await db.Student
+                var students = await db.Students
                                         .Where(student => student.PointTest.Any(x => x.IdSubject == request.IdSubject)).ToListAsync();
                 var listdata = new List<Data>();
                 var data = new Data();
@@ -44,13 +44,14 @@ namespace Application.Students
                 {
                     value = (((double)student.Point.Tk * 0.2+(double)student.Point.Gk * 0.3+(double)student.Point.Ck * 0.5)*2
                     +(double)student.Point.Th)/3 ;
+                    value = Math.Round(value,2,MidpointRounding.AwayFromZero);
                     data = new Data(){
                         Student = student,
                         Value= value
                     };
                     listdata.Add(data);
                 }
-                kMean = new KMean(listdata,2);
+                kMean = new KMean(listdata,4);
                 kMean.Run();
                 return kMean.TrainingDatas;
             }
