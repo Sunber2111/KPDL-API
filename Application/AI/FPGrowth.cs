@@ -45,7 +45,7 @@ namespace Application.AI
                 {
                     foreach (var j in i.Value)
                     {
-                        if (j.ListCP.Count <= 5)
+                        if (j.ListCP.Count <= 4)
                         {
                             var str = await TranslateToWord2(j, minConf, alo.Histogram, alo.FinalData.Count, Math.Round((double)j.Value / (double)query.Count, 2, MidpointRounding.AwayFromZero));
                             if (str.Count > 0)
