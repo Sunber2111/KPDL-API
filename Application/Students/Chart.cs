@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Algorithm.KMean;
+using Application.PoinTests.DTO;
 using Application.Students.DTO;
 using AutoMapper;
 using Domain;
@@ -26,6 +27,7 @@ namespace Application.Students
             private readonly IMapper _mapper;
 
             private KMean kMean;
+            
             public Handler(DataContext db, IMapper mapper)
             {
                 _mapper = mapper;
@@ -34,19 +36,23 @@ namespace Application.Students
 
             public async Task<List<TrainingData>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var students = await db.Students
-                                        .Where(student => student.PointTest.Any(x => x.IdSubject == request.IdSubject)).ToListAsync();
+                var points = await db.PointTests.Where(t=>t.ClassRoomId==request.IdSubject).ToListAsync();
                 var listdata = new List<Data>();
                 var data = new Data();
                 double value = 0;
-                var ds =_mapper.Map<List<Student>, List<StudentDTO>>(students);
-                foreach(var student in ds)
+                foreach(var p in points)
                 {
-                    value = (((double)student.Point.Tk * 0.2+(double)student.Point.Gk * 0.3+(double)student.Point.Ck * 0.5)*2
-                    +(double)student.Point.Th)/3 ;
+                    value = (((double)p.Tk * 0.2+(double)p.Gk * 0.3+(double)p.Ck * 0.5)*2
+                    +(double)p.Th)/3 ;
+
                     value = Math.Round(value,2,MidpointRounding.AwayFromZero);
+
+                    var studentDTO = _mapper.Map<Student,StudentDTO>(p.Student);
+
+                    studentDTO.Point = _mapper.Map<PointTest,PointTestDTO>(p);
+
                     data = new Data(){
-                        Student = student,
+                        Student = studentDTO,
                         Value= value
                     };
                     listdata.Add(data);

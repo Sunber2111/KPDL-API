@@ -22,6 +22,19 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Semesters",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Semester", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Students",
                 columns: table => new
                 {
@@ -74,6 +87,33 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ClassRooms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Identity = table.Column<string>(nullable: true),
+                    SubjectId = table.Column<int>(nullable: false),
+                    SemesterId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClassRoom", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ClassRoom_Semester",
+                        column: x => x.SemesterId,
+                        principalTable: "Semesters",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ClassRoom_Subject",
+                        column: x => x.SubjectId,
+                        principalTable: "Subjects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -111,21 +151,21 @@ namespace Persistence.Migrations
                     CK = table.Column<double>(nullable: true),
                     TH = table.Column<double>(nullable: true),
                     IdStudent = table.Column<int>(nullable: true),
-                    IdSubject = table.Column<int>(nullable: true)
+                    ClassRoomId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PointTest", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PointTest_Student",
-                        column: x => x.IdStudent,
-                        principalTable: "Students",
+                        name: "FK_PointTest_ClassRoom",
+                        column: x => x.ClassRoomId,
+                        principalTable: "ClassRooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_PointTest_Subject",
-                        column: x => x.IdSubject,
-                        principalTable: "Subjects",
+                        name: "FK_PointTest_Student",
+                        column: x => x.IdStudent,
+                        principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -136,7 +176,7 @@ namespace Persistence.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    IdSubject = table.Column<int>(nullable: true),
+                    ClassRoomId = table.Column<int>(nullable: true),
                     IdTeacher = table.Column<int>(nullable: true),
                     Location = table.Column<string>(nullable: true),
                     TeachDay = table.Column<string>(maxLength: 50, nullable: true)
@@ -145,9 +185,9 @@ namespace Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Teaching", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Teaching_Subject",
-                        column: x => x.IdSubject,
-                        principalTable: "Subjects",
+                        name: "FK_Teaching_ClassRoom",
+                        column: x => x.ClassRoomId,
+                        principalTable: "ClassRooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -157,6 +197,16 @@ namespace Persistence.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClassRooms_SemesterId",
+                table: "ClassRooms",
+                column: "SemesterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClassRooms_SubjectId",
+                table: "ClassRooms",
+                column: "SubjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_StudentId",
@@ -169,19 +219,19 @@ namespace Persistence.Migrations
                 column: "SubjectId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PointTests_ClassRoomId",
+                table: "PointTests",
+                column: "ClassRoomId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PointTests_IdStudent",
                 table: "PointTests",
                 column: "IdStudent");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PointTests_IdSubject",
-                table: "PointTests",
-                column: "IdSubject");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Teachings_IdSubject",
+                name: "IX_Teachings_ClassRoomId",
                 table: "Teachings",
-                column: "IdSubject");
+                column: "ClassRoomId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teachings_IdTeacher",
@@ -207,10 +257,16 @@ namespace Persistence.Migrations
                 name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Subjects");
+                name: "ClassRooms");
 
             migrationBuilder.DropTable(
                 name: "Teachers");
+
+            migrationBuilder.DropTable(
+                name: "Semesters");
+
+            migrationBuilder.DropTable(
+                name: "Subjects");
         }
     }
 }

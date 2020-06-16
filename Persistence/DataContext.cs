@@ -19,6 +19,8 @@ namespace Persistence
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Teaching> Teachings { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Semester> Semesters { get; set; }
+        public virtual DbSet<ClassRoom> ClassRooms { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,6 +37,33 @@ namespace Persistence
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<ClassRoom>(entity =>
+           {
+               entity.HasKey(e => e.Id)
+                   .HasName("PK_ClassRoom");
+
+               entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+               entity.HasOne(d => d.Subject)
+                     .WithMany(s => s.ClassRooms)
+                     .HasForeignKey(d => d.SubjectId)
+                     .HasConstraintName("FK_ClassRoom_Subject");
+
+               entity.HasOne(d => d.Semester)
+                    .WithMany(s => s.ClassRooms)
+                    .HasForeignKey(d => d.SemesterId)
+                    .HasConstraintName("FK_ClassRoom_Semester");
+           });
+
+            modelBuilder.Entity<Semester>(entity =>
+            {
+                entity.HasKey(e => e.Id)
+                    .HasName("PK_Semester");
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
             });
 
             modelBuilder.Entity<PointTest>(entity =>
@@ -56,10 +85,10 @@ namespace Persistence
                     .HasForeignKey(d => d.IdStudent)
                     .HasConstraintName("FK_PointTest_Student");
 
-                entity.HasOne(d => d.Subject)
+                entity.HasOne(d => d.ClassRoom)
                     .WithMany(p => p.PointTest)
-                    .HasForeignKey(d => d.IdSubject)
-                    .HasConstraintName("FK_PointTest_Subject");
+                    .HasForeignKey(d => d.ClassRoomId)
+                    .HasConstraintName("FK_PointTest_ClassRoom");
             });
 
             modelBuilder.Entity<Student>(entity =>
@@ -78,23 +107,24 @@ namespace Persistence
                     .HasMaxLength(15)
                     .IsUnicode(false);
 
-                
+
             });
 
             modelBuilder.Entity<Subject>(entity =>
             {
-                 entity.HasKey(e => e.Id).HasName("PK_Subject");
+                entity.HasKey(e => e.Id).HasName("PK_Subject");
 
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Name).HasMaxLength(50);
+
             });
 
             modelBuilder.Entity<Teacher>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
-                entity.HasKey(e=>e.Id).HasName("PK_Teacher");
+                entity.HasKey(e => e.Id).HasName("PK_Teacher");
 
                 entity.Property(e => e.Degree).HasMaxLength(50);
 
@@ -117,10 +147,10 @@ namespace Persistence
 
                 entity.Property(e => e.TeachDay).HasMaxLength(50);
 
-                entity.HasOne(d => d.Subject)
+                entity.HasOne(d => d.ClassRoom)
                     .WithMany(p => p.Teaching)
-                    .HasForeignKey(d => d.IdSubject)
-                    .HasConstraintName("FK_Teaching_Subject");
+                    .HasForeignKey(d => d.ClassRoomId)
+                    .HasConstraintName("FK_Teaching_ClassRoom");
 
                 entity.HasOne(d => d.Teacher)
                     .WithMany(p => p.Teaching)

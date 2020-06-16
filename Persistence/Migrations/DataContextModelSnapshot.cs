@@ -40,6 +40,31 @@ namespace Persistence.Migrations
                     b.ToTable("Accounts");
                 });
 
+            modelBuilder.Entity("Domain.ClassRoom", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Identity")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("SemesterId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id")
+                        .HasName("PK_ClassRoom");
+
+                    b.HasIndex("SemesterId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.ToTable("ClassRooms");
+                });
+
             modelBuilder.Entity("Domain.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -75,14 +100,14 @@ namespace Persistence.Migrations
                         .HasColumnName("CK")
                         .HasColumnType("REAL");
 
+                    b.Property<int?>("ClassRoomId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<double?>("Gk")
                         .HasColumnName("GK")
                         .HasColumnType("REAL");
 
                     b.Property<int?>("IdStudent")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("IdSubject")
                         .HasColumnType("INTEGER");
 
                     b.Property<double?>("Th")
@@ -96,11 +121,26 @@ namespace Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("PK_PointTest");
 
+                    b.HasIndex("ClassRoomId");
+
                     b.HasIndex("IdStudent");
 
-                    b.HasIndex("IdSubject");
-
                     b.ToTable("PointTests");
+                });
+
+            modelBuilder.Entity("Domain.Semester", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id")
+                        .HasName("PK_Semester");
+
+                    b.ToTable("Semesters");
                 });
 
             modelBuilder.Entity("Domain.Student", b =>
@@ -205,7 +245,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("IdSubject")
+                    b.Property<int?>("ClassRoomId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("IdTeacher")
@@ -221,11 +261,28 @@ namespace Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("PK_Teaching");
 
-                    b.HasIndex("IdSubject");
+                    b.HasIndex("ClassRoomId");
 
                     b.HasIndex("IdTeacher");
 
                     b.ToTable("Teachings");
+                });
+
+            modelBuilder.Entity("Domain.ClassRoom", b =>
+                {
+                    b.HasOne("Domain.Semester", "Semester")
+                        .WithMany("ClassRooms")
+                        .HasForeignKey("SemesterId")
+                        .HasConstraintName("FK_ClassRoom_Semester")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Subject", "Subject")
+                        .WithMany("ClassRooms")
+                        .HasForeignKey("SubjectId")
+                        .HasConstraintName("FK_ClassRoom_Subject")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Order", b =>
@@ -247,23 +304,23 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.PointTest", b =>
                 {
+                    b.HasOne("Domain.ClassRoom", "ClassRoom")
+                        .WithMany("PointTest")
+                        .HasForeignKey("ClassRoomId")
+                        .HasConstraintName("FK_PointTest_ClassRoom");
+
                     b.HasOne("Domain.Student", "Student")
                         .WithMany("PointTest")
                         .HasForeignKey("IdStudent")
                         .HasConstraintName("FK_PointTest_Student");
-
-                    b.HasOne("Domain.Subject", "Subject")
-                        .WithMany("PointTest")
-                        .HasForeignKey("IdSubject")
-                        .HasConstraintName("FK_PointTest_Subject");
                 });
 
             modelBuilder.Entity("Domain.Teaching", b =>
                 {
-                    b.HasOne("Domain.Subject", "Subject")
+                    b.HasOne("Domain.ClassRoom", "ClassRoom")
                         .WithMany("Teaching")
-                        .HasForeignKey("IdSubject")
-                        .HasConstraintName("FK_Teaching_Subject");
+                        .HasForeignKey("ClassRoomId")
+                        .HasConstraintName("FK_Teaching_ClassRoom");
 
                     b.HasOne("Domain.Teacher", "Teacher")
                         .WithMany("Teaching")

@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Domain
 {
-    public class Subject
+    public class Semester
     {
-        public Subject()
+        public Semester()
         {
-            Orders = new HashSet<Order>();
             ClassRooms = new HashSet<ClassRoom>();
         }
         
@@ -15,7 +14,5 @@ namespace Domain
         public string Name { get; set; }
 
         public virtual ICollection<ClassRoom> ClassRooms { get; set; }
-        
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

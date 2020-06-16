@@ -250,6 +250,533 @@ var student = new Student()
                 Sex=false
             };
             context.Add(student);
+            student = new Student()
+            {
+                
+                Address="An Giang",
+                Email="nguyentin@gmail.com",
+                Dob=new DateTime(1991,12,2),
+                Image=null,
+                Name="Nguyễn Trọng Tín ",
+                Phone="0998455215",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Phú Yên",
+                Email="longhai1588@gmail.com",
+                Dob=new DateTime(1995,11,2),
+                Image=null,
+                Name="Nguyễn Long Hải",
+                Phone="098228912",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Hồ Chí Minh",
+                Email="nguyenoanh92 @gmail.com",
+                Dob=new DateTime(1992,08,22),
+                Image=null,
+                Name="Nguyễn Phương Oanh",
+                Phone="092887445",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Lâm Đồng",
+                Email="tutruong96@gmail.com",
+                Dob=new DateTime(1996,9,2),
+                Image=null,
+                Name="Trương Tú",
+                Phone="098755515",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Bình Định",
+                Email="nav96@gmail.com",
+                Dob=new DateTime(1996,10,6),
+                Image=null,
+                Name="Nguyễn Anh Vũ ",
+                Phone="0787433215",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Bình Dương",
+                Email="voquangthinh@gmail.com",
+                Dob=new DateTime(2001,5,12),
+                Image=null,
+                Name="Võ Quang Thịnh",
+                Phone="097445852",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Vĩnh Phúc",
+                Email="nguyenminhthong13@gmail.com",
+                Dob=new DateTime(1998,6,9),
+                Image=null,
+                Name="Nguyễn Minh Thông",
+                Phone="085533215",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Tây Ninh",
+                Email="levanduong @gmail.com",
+                Dob=new DateTime(1999,7,25),
+                Image=null,
+                Name="Lê Văn Dương",
+                Phone="095463215",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Hải Phòng ",
+                Email="leduyen@gmail.com",
+                Dob=new DateTime(1998,10,15),
+                Image=null,
+                Name="Lê Thùy Duyên ",
+                Phone="0989654883",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Bảo Lộc",
+                Email="Dinhchien98@gmail.com",
+                Dob=new DateTime(1997,11,2),
+                Image=null,
+                Name="Phan Đình Chiến",
+                Phone="0797233215",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Thái Bình",
+                Email="vantung@gmail.com",
+                Dob=new DateTime(1996,11,2),
+                Image=null,
+                Name="Nguyễn Văn Tùng ",
+                Phone="012841253",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Quảng Bình ",
+                Email="DinhThinh97 @gmail.com",
+                Dob=new DateTime(1997,1,2),
+                Image=null,
+                Name="Trần Đình Thịnh",
+                Phone="095448996",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Lai Châu ",
+                Email="Nhattri123 @gmail.com",
+                Dob=new DateTime(1998,9,7),
+                Image=null,
+                Name="Nguyễn Nhật Trí ",
+                Phone="097889355",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Thanh Hóa",
+                Email="Tuoanh99@gmail.com",
+                Dob=new DateTime(1999,7,5),
+                Image=null,
+                Name="Võ Tú Oanh ",
+                Phone="0182259601",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Long An",
+                Email="tramyle12@gmail.com",
+                Dob=new DateTime(1995,11,12),
+                Image=null,
+                Name="Lê Trà My",
+                Phone="0123587541",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Quảng Trị ",
+                Email="hoangnam@gmail.com",
+                Dob=new DateTime(1999,12,2),
+                Image=null,
+                Name=" Nguyễn Lê Hoàng Nam",
+                Phone="0982984512",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Tiền Giang",
+                Email="lethu98 @gmail.com",
+                Dob=new DateTime(1999,1,2),
+                Image=null,
+                Name="Lê Minh Thư ",
+                Phone="0982235912",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Kon Tum ",
+                Email="lengocha@gmail.com",
+                Dob=new DateTime(1999,9,25),
+                Image=null,
+                Name="Lê Ngọc Hà ",
+                Phone="0982256912",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Cà Mau",
+                Email="thuongvo @gmail.com",
+                Dob=new DateTime(1989,2,2),
+                Image=null,
+                Name="Võ Thị Thương ",
+                Phone="0962554443",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="An Giang",
+                Email="tongthao55 @gmail.com",
+                Dob=new DateTime(1989,5,5),
+                Image=null,
+                Name="Tống Thanh Thảo ",
+                Phone="0982594339",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            {
+                
+                Address="Hà Tĩnh",
+                Email="thuyquynhpham23@gmail.com",
+                Dob=new DateTime(1989,3,2),
+                Image=null,
+                Name="Phạm Thúy Quỳnh ",
+                Phone="052336994",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Bình Định",
+                Email="noname007@gmail.com",
+                Dob=new DateTime(1993,9,9),
+                Image=null,
+                Name="Tần Lưu Tinh ",
+                Phone="0964523554",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Quảng Nam",
+                Email="nguyenvancung95@gmail.com",
+                Dob=new DateTime(1995,10,1),
+                Image=null,
+                Name="Nguyễn Văn Cung ",
+                Phone="0842615485",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Bình Định",
+                Email="nguyenthimyduyen02 @gmail.com",
+                Dob=new DateTime(1992,2,5),
+                Image=null,
+                Name="Nguyễn Thị Mỹ Duyên ",
+                Phone="0754618794",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Cà Mau",
+                Email="baoanhxinhdep @gmail.com",
+                Dob=new DateTime(1998,1,6),
+                Image=null,
+                Name="Trần Bảo Anh ",
+                Phone="0987648754",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Kon Tum",
+                Email="nguoitrithuc@gmail.com",
+                Dob=new DateTime(1997,7,3),
+                Image=null,
+                Name="Lê Anh Dũng ",
+                Phone="0691234875",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Đồng Nai",
+                Email="mykieu451@gmail.com",
+                Dob=new DateTime(1996,2,7),
+                Image=null,
+                Name="Nguyễn Thị Mỹ Kiều ",
+                Phone="0215423183",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Bắc Giang",
+                Email="uongmuong @gmail.com",
+                Dob=new DateTime(1989,2,4),
+                Image=null,
+                Name="Lò Thị Uông ",
+                Phone="0541876298",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Hồ Chí Minh",
+                Email="thangnguyenvan22@gmail.com",
+                Dob=new DateTime(1996,4,9),
+                Image=null,
+                Name="Nguyễn Văn Thắng ",
+                Phone="0916457856",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Phú Yên",
+                Email="7phuockhai@gmail.com",
+                Dob=new DateTime(1998,1,2),
+                Image=null,
+                Name="Trần Phước Khải ",
+                Phone="0215423156",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Vũng Tàu ",
+                Email="thinhvuta@gmail.com",
+                Dob=new DateTime(1996,12,9),
+                Image=null,
+                Name="Nguyễn Văn Thịnh",
+                Phone="0339747002",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Đà Lạt ",
+                Email="kimthuthu@gmail.com",
+                Dob=new DateTime(1993,12,12),
+                Image=null,
+                Name="Trần Kim Thu ",
+                Phone="0351542887",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Đà Nẵng",
+                Email="khanhkhanh77@gmail.com",
+                Dob=new DateTime(1991,1,8),
+                Image=null,
+                Name="Nguyễn Hoàng Khánh ",
+                Phone="0984445152",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address="Bình Thuận",
+                Email="leomile@gmail.com",
+                Dob=new DateTime(1992,5,5),
+                Image=null,
+                Name="Lê Mỹ Lệ ",
+                Phone="03365887741",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Vĩnh Long ",
+                Email="dungnguyen99@gmail.com",
+                Dob=new DateTime(1995,5,9),
+                Image=null,
+                Name=" Nguyễn Thị Dung ",
+                Phone="0351542887",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Hà Tĩnh ",
+                Email="huyhung008@gmail.com",
+                Dob=new DateTime(1996,4,4),
+                Image=null,
+                Name=" Nguyễn Huy Hùng ",
+                Phone="0958455657",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Vĩnh Phúc ",
+                Email="nguyenVP11@gmail.com",
+                Dob=new DateTime(1991,1,9),
+                Image=null,
+                Name=" Nguyễn Cao Nguyên ",
+                Phone="0541265488",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Trà Vinh ",
+                Email="thuynguyen002 @gmail.com",
+                Dob=new DateTime(1999,3,12),
+                Image=null,
+                Name=" Nguyễn Thị Thúy ",
+                Phone="0878875464",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Hà Tĩnh ",
+                Email="loivinhto1@gmail.com",
+                Dob=new DateTime(1995,8,7),
+                Image=null,
+                Name=" Tô Vĩnh Lợi ",
+                Phone="0654825455",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Bắc Ninh ",
+                Email="hoangkimkim@gmail.com",
+                Dob=new DateTime(1999,2,4),
+                Image=null,
+                Name=" Hoàng Ánh Kim ",
+                Phone="0654845579",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Ninh Thuận ",
+                Email="hoangnguyen55@gmail.com",
+                Dob=new DateTime(1997,12,5),
+                Image=null,
+                Name=" Nguyễn Huy Hoàng ",
+                Phone="0996586842",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Long An ",
+                Email="loiloill@gmail.com",
+                Dob=new DateTime(1994,6,6),
+                Image=null,
+                Name=" Lê Thị Mỹ Lợi ",
+                Phone="0254525488",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Lâm Đồng ",
+                Email="dongsao22@gmail.com",
+                Dob=new DateTime(1991,3,4),
+                Image=null,
+                Name=" Đồng Thị Sao ",
+                Phone="0336548754",
+                Sex=false
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Nghệ An ",
+                Email="thanhlamdo@gmail.com",
+                Dob=new DateTime(1997,2,5),
+                Image=null,
+                Name=" Đỗ Thành Lâm ",
+                Phone="0564545879",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Thanh Hóa ",
+                Email="tunglamnguyen5@gmail.com",
+                Dob=new DateTime(1995,5,5),
+                Image=null,
+                Name=" Nguyễn Tùng Lâm ",
+                Phone="0875485855",
+                Sex=true
+            };
+            context.Add(student);
+            student = new Student()
+            { 
+                Address=" Hà Nội ",
+                Email="VanDuc456@gmail.com",
+                Dob=new DateTime(1991,12,5),
+                Image=null,
+                Name=" Cái Văn Đức ",
+                Phone="0546587548",
+                Sex=true
+            };
+            context.Add(student);
 
 ////
 
@@ -302,3 +829,113 @@ var sub = new Subject{
             }
 
             await context.SaveChangesAsync();
+
+----------------------------------------
+ var listYear = new List<string>
+            {
+                "2018",
+                "2019",
+                "2020"
+            };
+
+            var listHK = new List<string>
+            {
+                "HKI",
+                "HKII",
+                "HKIII"
+            };
+            foreach(var y in listYear)
+            {
+                foreach(var h in listHK)
+                {
+                    var s = new Semester
+                    {
+                        Name = h+" "+y
+                    };
+                    context.Semesters.Add(s);
+                }
+            }
+-----------------------------------------
+var sub = new Subject
+            {
+                Name = "front-end React"
+            };
+            context.Subjects.Add(sub);
+            sub = new Subject
+            {
+                Name = "front-end Vue"
+            };
+            context.Subjects.Add(sub);
+            sub = new Subject
+            {
+                Name = "front-end Angular"
+            };
+            context.Subjects.Add(sub);
+            sub = new Subject
+            {
+                Name = "Backend .Net core 3.1"
+            };
+            context.Subjects.Add(sub);
+            sub = new Subject
+            {
+                Name = "Backend Java core"
+            };
+            context.Subjects.Add(sub);
+            sub = new Subject
+            {
+                Name = "Backend spring boot"
+            };
+            context.Subjects.Add(sub);
+            sub = new Subject
+            {
+                Name = "Backend Nodejs"
+            };
+            context.Subjects.Add(sub);
+
+-------------------------------------------------------------
+var listSubj = context.Subjects.ToList();
+
+            var listSem = context.Semesters.ToList();
+
+            foreach (var s in listSem)
+            {
+                foreach (var j in listSubj)
+                {
+                    var idt = $"{GetRandom(10000000,20000000)}";
+                    var cr = new ClassRoom
+                    {
+                        Identity = idt,
+                        SemesterId = s.Id,
+                        SubjectId = j.Id,
+                    };
+                    await context.ClassRooms.AddAsync(cr);
+                }
+            }
+
+-------------------------------------------------------------
+
+ var listS = context.Semesters.ToList();
+
+            var listC = context.Subjects.ToList();
+
+            foreach(var s in listS)
+            {
+                var ranNum = GetRandom(3,5);
+
+                for(var i=1;i<=ranNum;i++)
+                {
+                    foreach(var c in listC)
+                    {
+                        var ranId = GetRandom(10000000,20000000).ToString();
+
+                        var cr = new ClassRoom
+                        {
+                            Identity = ranId,
+                            SemesterId = s.Id,
+                            SubjectId = c.Id
+                        };
+                        await context.ClassRooms.AddAsync(cr);
+                    }
+                }
+            }
+            

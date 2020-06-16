@@ -8,9 +8,9 @@
         public double? Ck { get; set; }
         public double? Th { get; set; }
         public int? IdStudent { get; set; }
-        public int? IdSubject { get; set; }
+        public int? ClassRoomId { get; set; }
 
         public virtual Student Student { get; set; }
-        public virtual Subject Subject { get; set; }
+        public virtual ClassRoom ClassRoom { get; set; }
     }
 }

@@ -12,26 +12,28 @@ namespace Persistence
         public static async Task SeedData(DataContext context)
         {
 
-            var sub = context.Subjects.Where(x=>x.Id>=7).ToList();
+            var listSub = await context.Subjects.ToListAsync();
 
-            foreach (var i in sub)
+            var listStu = await context.Students.ToListAsync();
+
+            foreach(var su in listSub)
             {
-                var num_ran_stu = GetRandom(1, 6);
+                var skip = GetRandom(0,20);
 
-                for (int j = 0; j < num_ran_stu; j++)
+                var ds = listStu.Skip(skip);
+
+                foreach(var s in ds)
                 {
-                    var ran_stu = GetRandom(1, 20);
-                    var order = new Order
+                    var od = new Order
                     {
-                        StudentId = ran_stu + 1,
-                        SubjectId = i.Id,
-                        OrderDate = DateTime.Now
+                        StudentId = s.Id,
+                        SubjectId = su.Id,
+                        OrderDate=DateTime.Now
                     };
-                    context.Orders.Add(order);
-                    await context.SaveChangesAsync();
-
+                    await context.Orders.AddAsync(od);
                 }
             }
+
             await context.SaveChangesAsync();
 
         }
@@ -49,3 +51,4 @@ namespace Persistence
         }
     }
 }
+

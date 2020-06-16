@@ -1,6 +1,9 @@
 using System.Linq;
+using Application.ClassRooms.DTO;
 using Application.PoinTests.DTO;
+using Application.Semesters.DTO;
 using Application.Students.DTO;
+using Application.Subjects.DTO;
 using AutoMapper;
 using Domain;
 
@@ -10,8 +13,14 @@ namespace Application.Students
     {
         public MappingProfile()
         {
-            CreateMap<Student, StudentDTO>()
-                    .ForMember(d => d.Point, o => o.MapFrom(s => s.PointTest.FirstOrDefault()));
+            CreateMap<Student, StudentDTO>();
+
+            CreateMap<Subject, SubjectDTO>();
+
+            CreateMap<ClassRoom, ClassRoomDTO>();
+
+            CreateMap<Semester, SemesterDTO>();
+
             CreateMap<PointTest, PointTestDTO>();
         }
     }

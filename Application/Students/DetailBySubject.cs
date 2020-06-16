@@ -33,7 +33,7 @@ namespace Application.Students
             public async Task<List<StudentDTO>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var students = await db.Students
-                                        .Where(student => student.PointTest.Any(x => x.IdSubject == request.IdSubject)).ToListAsync();
+                                        .Where(student => student.PointTest.Any(x => x.ClassRoomId == request.IdSubject)).ToListAsync();
                 return _mapper.Map<List<Student>, List<StudentDTO>>(students);
             }
         }
